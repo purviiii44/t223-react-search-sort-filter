@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 function useFetch(url)
 {
     let[data, setData]=useState(null)
+    useEffect(()=>
+    {
     async function fetchData()
     {
         let response=await fetch(url);
@@ -10,8 +12,8 @@ function useFetch(url)
         setData(responseData)
     }
 
-    useEffect(()=>{fetchData()}, [url])
-
+    fetchData()
+},[url])
     return {data}
 }
 
